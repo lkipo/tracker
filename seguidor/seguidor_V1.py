@@ -23,7 +23,7 @@ def init_camshift(x, y, w, h):
 
     return roi, hsv_roi, mask, roi_hist, term_crit, track_window
 
-# cap = cv.VideoCapture('helicopter.mp4') # capturar video
+# cap = cv.VideoCapture('schumi.mp4') # capturar video
 cap = cv.VideoCapture(0) # capturar camara 0
 
 while True:
@@ -31,11 +31,9 @@ while True:
     ret, frame = cap.read()
 
     # Control ↓
-    key = cv.waitKey(30) & 0xFF
+    key = cv.waitKey(10) & 0xFF
     if key== ord("c"): 
         crop = True
-    if key== ord("p"): 
-        P = np.diag([100,100,100,100])**2
     if key== ord("s"): 
         break
     if key==ord(" "): 
@@ -65,7 +63,7 @@ while True:
         pts = np.int0(pts)
         img2 = cv.polylines(frame,[pts],True, 255,2)
         cv.imshow('img2',img2)
-        #cv.imshow('hsv', hsv)
+        
 
     else:
         cv.imshow('frame', frame)
