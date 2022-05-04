@@ -22,7 +22,6 @@ gray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
 
 # Find the chess board corners
 ret, corners = cv.findChessboardCorners(gray, (7,6), None)
-print(corners)
 
 # If found, add object points, image points (after refining them)
 if ret == True:
@@ -54,7 +53,7 @@ if ret == True:
     dst = cv.remap(img, mapx, mapy, cv.INTER_LINEAR)
     # crop the image
     x, y, w, h = roi
-    #dst = dst[y:y+h, x:x+w]
+    dst = dst[y:y+h, x:x+w]
 
     cv.imwrite('calibresult.png', dst)
 
@@ -62,5 +61,6 @@ if ret == True:
     cv.waitKey()
 
     print(newcameramtx)
+    np.savez(file='B',  dst=dst, dist=dist, rvecs=rvecs, tvecs=tvecs)
 
 cv.destroyAllWindows()
