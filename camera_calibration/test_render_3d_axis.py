@@ -2,6 +2,8 @@ import numpy as np
 import cv2 as cv
 import glob
 
+#https://docs.opencv.org/4.x/d7/d53/tutorial_py_pose.html
+
 # Load previously saved data
 # Cambiar esto
 with np.load('B.npz') as X:
